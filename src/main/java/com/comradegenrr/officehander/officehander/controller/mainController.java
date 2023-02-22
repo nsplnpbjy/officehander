@@ -10,6 +10,7 @@ import java.util.Objects;
 import javax.annotation.Resource;
 import javax.servlet.http.HttpServletResponse;
 
+import org.springframework.web.bind.annotation.CrossOrigin;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.ResponseBody;
 import org.springframework.web.bind.annotation.RestController;
@@ -20,6 +21,7 @@ import com.comradegenrr.officehander.officehander.service.MainService;
 
 
 
+@CrossOrigin("*")
 @RestController
 public class mainController {
 

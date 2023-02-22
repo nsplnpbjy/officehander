@@ -10,7 +10,7 @@ import org.springframework.stereotype.Component;
 @Component
 public class AutoClean {
 
-    @Scheduled(cron = "0/10 * * * * ?")
+    @Scheduled(cron = "* * * 1/1 * ?")
     public void autoClean() throws IOException, InterruptedException{
         Logger logger = LoggerFactory.getLogger(AutoClean.class);
         logger.info("开始执行自动清理任务");

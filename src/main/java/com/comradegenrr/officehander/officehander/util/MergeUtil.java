@@ -36,6 +36,7 @@ public class MergeUtil {
 
         CellRange[] cellRanges1 =  workSheet1.getRows();
         CellRange[] cellRanges2 =  workSheet2.getRows();
+        int maxRowCount = 3000;
         int resultRowCount = 1;
         for(CellRange c1:cellRanges1){
             for(CellRange c2:cellRanges2){
@@ -49,6 +50,9 @@ public class MergeUtil {
                     }
                     resultRowCount++;
                 }
+            }
+            if(resultRowCount>=maxRowCount){
+                break;
             }
         }
         UUID uuid = UUID.randomUUID();

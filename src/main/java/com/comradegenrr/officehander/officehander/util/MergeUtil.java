@@ -39,6 +39,9 @@ public class MergeUtil {
         int resultRowCount = 1;
         for(CellRange c1:cellRanges1){
             for(CellRange c2:cellRanges2){
+                if(c1.isBlank()){
+                    continue;
+                }
                 if(c1.getColumns()[Integer.valueOf(clm)-1].getValue().equals(c2.getColumns()[Integer.valueOf(clm)-1].getValue())){
                     resultWorkSheet.insertRow(resultRowCount, c1.getColumnCount());
                     for(int i=0;i<c1.getColumnCount();i++){

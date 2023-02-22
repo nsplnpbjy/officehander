@@ -5,6 +5,7 @@ import java.io.InputStream;
 import java.io.OutputStream;
 import java.net.URLEncoder;
 import java.util.List;
+import java.util.Objects;
 
 import javax.annotation.Resource;
 import javax.servlet.http.HttpServletResponse;
@@ -29,6 +30,9 @@ public class mainController {
     @ResponseBody
     public String getMethodName(MultipartHttpServletRequest request,HttpServletResponse response) throws IOException {
         String clm = request.getParameter("clm");
+        if(Objects.isNull(clm)){
+            return "-1";
+        }
         List<MultipartFile> multipartFileList = request.getFiles("file");
         response.setContentType("application/octet-stream");
         response.setCharacterEncoding("UTF-8");

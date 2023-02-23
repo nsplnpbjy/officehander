@@ -7,6 +7,7 @@ import java.io.InputStream;
 import java.util.List;
 import java.util.UUID;
 
+import org.springframework.beans.factory.annotation.Value;
 import org.springframework.stereotype.Component;
 import org.springframework.web.multipart.MultipartFile;
 
@@ -17,6 +18,9 @@ import com.spire.xls.Worksheet;
 @Component
 public class MergeUtil {
     
+    @Value("${filePath}")
+    String filePath;
+
     public InputStream mergeTwo(List<MultipartFile> multipartFileList, String clm) throws IOException{
         if(multipartFileList.size()!=2){
             return null;
@@ -56,8 +60,8 @@ public class MergeUtil {
             }
         }
         UUID uuid = UUID.randomUUID();
-        resultWorkbook.saveToFile(uuid+"temp.xlsx");
-        File returnFile = new File(uuid+"temp.xlsx");
+        resultWorkbook.saveToFile(filePath+uuid+"temp.xlsx");
+        File returnFile = new File(filePath+uuid+"temp.xlsx");
         
         return new FileInputStream(returnFile);
 

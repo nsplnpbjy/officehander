@@ -4,12 +4,12 @@ import java.io.IOException;
 
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
-import org.springframework.scheduling.annotation.Async;
+import org.springframework.boot.autoconfigure.condition.ConditionalOnProperty;
 import org.springframework.scheduling.annotation.Scheduled;
 import org.springframework.stereotype.Component;
 
 @Component
-@Async
+@ConditionalOnProperty(prefix = "autoclean",name = "enable",havingValue = "true")
 public class AutoClean {
 
     @Scheduled(fixedDelay = 50000)
